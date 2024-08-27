@@ -3,7 +3,7 @@
 
 #Skrypt uruchamiany podczas inicjalizacji kontenera. Przyjmuje parametr master lub worker w zaleznosci w jakim trybie chcemy uruchomic serwer sparka
 
-unzip network-malware-detection-connection-analysis.zip
+#unzip network-malware-detection-connection-analysis.zip
 
 if [ "$1" = "master" ]; then
     export SPARK_HOME=/opt/bitnami/spark

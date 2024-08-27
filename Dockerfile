@@ -29,7 +29,7 @@ RUN pip3 install --no-cache-dir \
 WORKDIR /app
 
 
-COPY network-malware-detection-connection-analysis.zip .
+#COPY network-malware-detection-connection-analysis.zip .
 
 # Copy the entrypoint script
 COPY entrypoint.sh /entrypoint.sh
