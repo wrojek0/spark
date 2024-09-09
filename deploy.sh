@@ -2,7 +2,7 @@
 
 #Skrypt powinien byc odpalany na maszynie MASTER, uruchamia kontenery na wyspecyfikowanych maszynach.
 #Aby skrypt dzialal poprawnie nalezy upewnic sie ze odpowiednie klucze z maszyny master sa na maszynach docelowych, aby ssh bylo mozliwe bez hasla. 
-
+#ssh-copy-id user@remote_host
 
 
 # Zmienne środowiskowe
@@ -22,7 +22,7 @@ echo "[DEPLOY.sh] Uruchamianie kontenera na maszynie master..."
 
 # Przy pomocy flagi -v mozna rowniez podmontowac lokalne foldery do kontenera np: -v /source/input:/destination/
 docker run -d --expose=8888 -p 8889:8889 -p 8080:8080 -p 7077:7077 -p 8888:8888 --network host -v ~/Pulpit/wrojek:/app/data $CONTAINER_IMAGE master
-# docker run hello-world
+
 
 echo "[DEPLOY.sh] Uruchamianie workerow..." 
 for i in "${!WORKER_IPS[@]}"; do
@@ -31,7 +31,6 @@ for i in "${!WORKER_IPS[@]}"; do
     
     echo "[DEPLOY.SH] Uruchamianie kontenera na maszynie worker ($WORKER_IP)..."
     ssh $WORKER_USER@$WORKER_IP "docker run -d --expose=8888 -p 8889:8889 -p 8080:8080 -p 7077:7077 -p 8888:8888 --network host $CONTAINER_IMAGE worker"
-    #ssh $WORKER_USER@$WRKER_IP "docker run hello-world"
 
 done
 
